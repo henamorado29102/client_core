@@ -1,0 +1,27 @@
+<app-title title="Users"></app-title>
+<a 
+                [routerLink]="['/dashboard/add-user', 0]"
+                class="mx-5 hover:underline" 
+            >
+                Add User
+            </a>
+<ul>
+    @for (user of userService.users(); track user.id) {
+        <li class="flex items-center my-2 cursor-pointer">
+
+            <img
+                srcset="https://reqres.in/img/faces/7-image.jpg"
+                [alt]="user.name"
+                class="rounded w-14"
+            />
+            <a 
+                [routerLink]="['/dashboard/user', user.id ]"
+                class="mx-5 hover:underline" 
+            >
+                {{ user.name }} {{ user.lastname }}
+            </a>
+        </li>
+    } @empty {
+        <h3>Wait for it!</h3>
+    }
+</ul>
